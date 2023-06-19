@@ -29,4 +29,17 @@ func findInText(haystack string, needle string) {
 	}
 
 	fmt.Printf("The word \"%s\" appears %d times in the text at positions: %d", needle, i, result)
+
+	students()
+}
+
+func students() {
+	evaluations := []float32{10.0, 5.5, 2.2, 9.2}
+	var sum float32
+
+	for _, v := range evaluations {
+		sum += v
+	}
+	result := sum / float32(len(evaluations))
+	fmt.Printf("\ngrade average: %.2f", result)
 }
