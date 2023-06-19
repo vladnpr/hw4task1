@@ -37,8 +37,8 @@ func students() {
 	evaluations := []float32{10.0, 5.5, 2.2, 9.2}
 	var sum float32
 
-	for _, v := range evaluations {
-		sum += v
+	for _, val := range evaluations {
+		sum += val
 	}
 	result := sum / float32(len(evaluations))
 	fmt.Printf("\ngrade average: %.2f", result)
