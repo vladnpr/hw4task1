@@ -17,7 +17,7 @@ func main() {
 }
 
 func findInText(haystack string, needle string) {
-	textSlice := strings.Split(haystack, " ")
+	textSlice := strings.Split(haystack, "\n")
 	var result []int
 	var i int
 	var v string
@@ -28,7 +28,7 @@ func findInText(haystack string, needle string) {
 		}
 	}
 
-	fmt.Printf("The word \"%s\" appears %d times in the text at positions: %d", needle, i, result)
+	fmt.Printf("The word \"%s\" appears %d times in the text at rows: %d", needle, i, result)
 
 	students()
 }
