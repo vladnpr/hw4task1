@@ -1,28 +1,37 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"strings"
 )
 
 func main() {
-	var text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. \n" +
-		"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took \n" +
-		"a galley of type and scrambled it to make a type specimen book. \n" +
-		"It has survived not only five centuries, but also the leap into electronic typesetting, \n" +
-		"remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset \n" +
-		"sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
-
-	findInText(text, "dummy")
+	findInText(readText(), "dummy")
 }
 
-func findInText(haystack string, needle string) {
-	textSlice := strings.Split(haystack, "\n")
+func readText() []string {
+	scanner := bufio.NewScanner(os.Stdin)
+	var text []string
+
+	for scanner.Scan() {
+		textLine := scanner.Text()
+		if textLine == "stop" {
+			break
+		}
+		text = append(text, textLine)
+	}
+
+	return text
+}
+
+func findInText(haystack []string, needle string) {
 	var result []int
 	var i int
 	var v string
 
-	for i, v = range textSlice {
+	for i, v = range haystack {
 		if strings.Contains(v, needle) {
 			result = append(result, i)
 		}
